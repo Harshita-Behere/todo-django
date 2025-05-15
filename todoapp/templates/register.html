@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <div class="register">
+        <div class="signupbox">
+            <form method = "post">
+                {% csrf_token %}
+                <div class="heading">
+                    Register
+                </div>
+<div class="field">
+    <b>Username</b>
+    <input type="text" required class="inp" placeholder = "Enter your Username" name = "uname">
+</div>
+<div class="field">
+    <b>Email</b>
+    <input type="email" required class="inp" name = "email">
+</div>
+<div class="field">
+    <b>Password</b>
+    <input type="password" required class="inp" name = "pwd">
+</div>
+<div class="field">
+    <input type="submit" class="submit-button" value = Register>
+</div>
+            </form>
+<div class="field">
+    <b>Already have an account?</b>
+    <br>
+    <a href="/login" class="anc">Login</a>
+</div>
+        </div>
+    </div>
+</body>
+</html>

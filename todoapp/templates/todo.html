@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolve</title>
+</head>
+<body>
+    <div class="register">
+        <div class="signupbox">
+            <form method="post">
+                {% csrf_token %}
+                <div class="heading">
+                    Evolve
+                </div>
+
+                <input type="text" class="inp" name="title" required placeholder="Add today's task : ">
+                <input type="submit" class="submit-button" value="Add Task">
+            </form>
+
+            <h2>Your Tasks</h2>
+            <ul>
+               {% for task in res %}
+                 <li>
+                    {{ task.title }} - {{ task.date }}
+                    | <a href="{% url 'edit-task' task.sr %}">Edit</a>
+                    | <a href="{% url 'delete-task' task.sr %}">Delete</a>
+                 </li>
+               {% empty %}
+                 <li>No tasks available.</li>
+               {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
+
