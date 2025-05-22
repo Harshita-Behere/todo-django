@@ -1,38 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evolve</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Evolve</title>
+  <style>
+    /* Chrome Pointer Custom Cursor */
+        * {
+            cursor: url(https://cur.cursors-4u.net/cursors/cur-11/cur1054.cur), auto !important;
+        }
+    /* Background and font */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: url('https://cur.cursors-4u.net/cursors/cur-13/cur1150.cur'), auto;
+    }
+
+    /* Container styling */
+    .register {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      width: 450px;
+    }
+
+    .signupbox {
+      width: 100%;
+    }
+
+    .heading {
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 25px;
+      text-align: center;
+      color: #333;
+    }
+
+    /* Form elements */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .inp {
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      cursor: text;
+    }
+
+    .submit-button {
+      padding: 12px;
+      font-size: 16px;
+      background-color: #6a1b9a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-button:hover {
+      background-color: #4a148c;
+    }
+
+    /* Task section */
+    h2 {
+      text-align: center;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #f9f9f9;
+      margin-bottom: 12px;
+      padding: 12px;
+      border-radius: 8px;
+      border-left: 5px solid #6a1b9a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      cursor: default;
+      transition: background-color 0.3s ease;
+    }
+
+    li:hover {
+      background-color: #f0e9fc;
+    }
+
+    li a {
+      margin-left: 10px;
+      text-decoration: none;
+      color: #6a1b9a;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    li a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 500px) {
+      .register {
+        width: 90%;
+        padding: 25px;
+      }
+
+      li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="register">
-        <div class="signupbox">
-            <form method="post">
-                {% csrf_token %}
-                <div class="heading">
-                    Evolve
-                </div>
+  <div class="register">
+    <div class="signupbox">
+      <form method="post">
+        {% csrf_token %}
+        <div class="heading">Evolve</div>
 
-                <input type="text" class="inp" name="title" required placeholder="Add today's task : ">
-                <input type="submit" class="submit-button" value="Add Task">
-            </form>
+        <input type="text" class="inp" name="title" required placeholder="Add today's task : " />
+        <input type="submit" class="submit-button" value="Add Task" />
+      </form>
 
-            <h2>Your Tasks</h2>
-            <ul>
-               {% for task in res %}
-                 <li>
-                    {{ task.title }} - {{ task.date }}
-                    | <a href="{% url 'edit-task' task.sr %}">Edit</a>
-                    | <a href="{% url 'delete-task' task.sr %}">Delete</a>
-                 </li>
-               {% empty %}
-                 <li>No tasks available.</li>
-               {% endfor %}
-            </ul>
-        </div>
+      <h2>Your Tasks</h2>
+      <ul>
+        {% for task in res %}
+        <li>
+          <span>{{ task.title }} - {{ task.date }}</span>
+          <span>
+            <a href="{% url 'edit-task' task.sr %}">Edit</a> |
+            <a href="{% url 'delete-task' task.sr %}">Delete</a>
+          </span>
+        </li>
+        {% empty %}
+        <li>No tasks available.</li>
+        {% endfor %}
+      </ul>
     </div>
+  </div>
 </body>
 </html>
-
-

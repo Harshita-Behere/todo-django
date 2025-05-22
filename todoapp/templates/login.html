@@ -1,35 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
+
+    <style>
+        /* Chrome Pointer Custom Cursor */
+        * {
+            cursor: url(https://cur.cursors-4u.net/cursors/cur-11/cur1054.cur), auto !important;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #74ebd5, #acb6e5);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .register {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            width: 350px;
+        }
+
+        .signupbox {
+            width: 100%;
+        }
+
+        .heading {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #333;
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        .field b {
+            display: block;
+            margin-bottom: 5px;
+            color: #444;
+        }
+
+        .inp {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #aaa;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+
+        .anc {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .anc:hover {
+            text-decoration: underline;
+        }
+
+        .field:last-child {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div class="register">
         <div class="signupbox">
-            <form method = "post">
+            <form method="post">
                 {% csrf_token %}
-                <div class="heading">
-                    Login
+                <div class="heading">Login</div>
+
+                <div class="field">
+                    <b>Username</b>
+                    <input type="text" name="uname" class="inp" placeholder="Enter your Username" required>
                 </div>
-<div class="field">
-    <b>Username</b>
-    <input type="text" required class="inp" placeholder = "Enter your Username" name = "uname">
-</div>
-<div class="field">
-    <b>Password</b>
-    <input type="password" required class="inp" name = "pwd">
-</div>
-<div class="field">
-    <input type="submit" class="submit-button" value = Register>
-</div>
+
+                <div class="field">
+                    <b>Password</b>
+                    <input type="password" name="pwd" class="inp" placeholder="Enter your Password" required>
+                </div>
+
+                <div class="field">
+                    <input type="submit" value="Login" class="submit-button">
+                </div>
             </form>
-<div class="field">
-    <b>Don't have an account?</b>
-    <br>
-    <a href="/register" class="anc">Register</a>
-</div>
+
+            <div class="field">
+                <b>Don't have an account?</b>
+                <br>
+                <a href="/register" class="anc">Register</a>
+            </div>
         </div>
     </div>
 </body>
