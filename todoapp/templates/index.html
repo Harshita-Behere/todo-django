@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome to Evolve</title>
+  <style>
+
+    
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&family=Roboto&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #f3e8ff 0%, #f9f5ff 100%);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #6a529f;
+      padding: 20px;
+      overflow: hidden;
+      position: relative;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Light blurred purple circles for subtle glass effect */
+    body::before, body::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.18;
+      z-index: 0;
+      transition: opacity 0.3s ease;
+    }
+    body::before {
+      width: 300px; height: 300px;
+      background: rgba(182, 141, 255, 0.4);
+      top: -110px; left: -110px;
+    }
+    body::after {
+      width: 380px; height: 380px;
+      background: rgba(155, 125, 230, 0.42);
+      bottom: -130px; right: -130px;
+    }
+
+    .container {
+      position: relative;
+      background: rgba(255, 255, 255, 0.75);
+      padding: 50px 45px 65px;
+      border-radius: 30px;
+      box-shadow:
+        inset 0 0 20px rgba(255, 255, 255, 0.6),
+        0 8px 32px rgba(161, 131, 255, 0.25);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(150, 125, 250, 0.3);
+      max-width: 480px;
+      width: 100%;
+      z-index: 1;
+      text-align: center;
+      user-select: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: #6a529f;
+    }
+    .container:hover {
+      transform: translateY(-10px);
+      box-shadow:
+        inset 0 0 25px rgba(255, 255, 255, 0.8),
+        0 18px 40px rgba(155, 110, 255, 0.45);
+    }
+
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 3.4rem;
+      background: linear-gradient(90deg, #9e8bff 0%, #7b63d8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 22px;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      user-select: text;
+      text-shadow:
+        0 0 10px #a99affcc,
+        0 2px 8px rgba(118, 86, 195, 0.3);
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #7e6bd1;
+      margin-bottom: 32px;
+      letter-spacing: 3px;
+      text-shadow: 0 0 6px #b6a9ffcc;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 26px;
+      max-width: 340px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #6a529fdd;
+      user-select: text;
+      text-shadow: 0 0 3px #a192c6aa;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 18px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-card {
+      background: linear-gradient(135deg, rgba(150, 110, 255, 0.95) 0%, rgba(120, 85, 230, 0.95) 100%);
+      color: #f5eaff;
+      padding: 19px 56px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 20px;
+      box-shadow: 0 10px 28px rgba(160, 100, 240, 0.7);
+      text-decoration: none;
+      user-select: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      text-shadow:
+        0 0 5px #d7c0ffcc;
+    }
+    .btn-card:hover {
+      background: linear-gradient(135deg, rgba(200, 160, 255, 1) 0%, rgba(180, 120, 240, 1) 100%);
+      box-shadow: 0 16px 45px rgba(180, 130, 255, 0.9);
+      transform: translateY(-5px);
+      border-color: #d1b2ff;
+      text-shadow:
+        0 0 10px #f5e8ff;
+    }
+    .btn-card svg {
+      width: 22px;
+      height: 22px;
+      fill: #f5eaff;
+      filter: drop-shadow(0 0 4px #b692ffcc);
+    }
+
+    .info-text {
+      max-width: 150px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #9a86c3cc;
+      margin-top: 10px;
+      user-select: text;
+      text-shadow: 0 0 5px #b2a4ffcc;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+      .btn-group {
+        gap: 28px;
+      }
+      .btn-card {
+        padding: 16px 44px;
+        font-size: 1.05rem;
+      }
+      .info-text {
+        max-width: 120px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="main" aria-label="Welcome container">
+    <h1>Welcome to Evolve</h1>
+    <div class="subtitle">Push Your Limits !!!</div>
+    <p>Join us in your journey to a better you. Login or Register to get started!</p>
+    <div class="btn-group">
+      <div class="btn-column">
+        <a href="{% url 'login' %}" class="btn-card" aria-label="Login">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" >
+            <path d="M10 17l5-5-5-5v10zM5 19h2v-2H5v2zm0-12h2V5H5v2zm14 2v8a2 2 0 0 1-2 2h-6v-2h6v-8h-6v-2h6a2 2 0 0 1 2 2z"/>
+          </svg>
+          Login
+        </a>
+        <div class="info-text">Already a member?</div>
+      </div>
+      <div class="btn-column">
+        <a href="{% url 'register' %}" class="btn-card" aria-label="Register">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" >
+            <path d="M12 5v14m7-7H5"/>
+          </svg>
+          Register
+        </a>
+        <div class="info-text">New here?</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
